@@ -37,7 +37,7 @@ export type PreferencesInfo = {
     discordPresence: boolean; // TODO
 };
 
-enum BuildingName {
+export enum BuildingName {
     CURSOR = 0,
     GRANDMA = 1,
     FARM = 2,
@@ -46,6 +46,7 @@ enum BuildingName {
     BANK = 5,
     TEMPLE = 6,
     WIZARD_TOWER = 7,
+    SHIPMENT = 8,
 }
 
 type BuildingInfo = {
