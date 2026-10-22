@@ -56,9 +56,62 @@ type BuildingInfo = {
 
 type UpgradeInfo = {};
 
-type MiscGameData = {
-    cookiesInBank: number;
-    cookiesThisAscension: number;
+export type MiscGameData = {
+    cookies: number;
+    totalCookiesEarned: number;
+    cookieClicks: number;
+    goldenCookieClicks_lifetime: number;
+    cookiesMadeByClicking: number;
+    goldenCookiesMissed: number;
+    backgroundType: number;
+    milkType: number;
+    cookiesFromPastRuns: number;
+    elderWrath: number;
+    pledges: number;
+    pledgeTimeLeft: number;
+    currentlyResearching: number;
+    researchTimeLeft: number;
+    ascensions: number;
+    goldenCookieClicks_thisRun: number;
+    cookiesSuckedByWrinklers: number;
+    wrinklersPopped: number;
+    santaLevel: number;
+    reindeerClicked: number;
+    seasonTimeLeft: number;
+    seasonSwitcherUses: number;
+    currentSeason: string;
+    amountOfCookiesContainedInWrinklers: number;
+    numberOfWrinklers: number;
+    prestigeLevel: number;
+    heavenlyChips: number;
+    heavenlyChipsSpent: number;
+    heavenlyCookies: number;
+    ascensionMode: number;
+    permanentUpgrade1: number;
+    permanentUpgrade2: number;
+    permanentUpgrade3: number;
+    permanentUpgrade4: number;
+    permanentUpgrade5: number;
+    dragonLevel: number;
+    dragonAura: number;
+    dragonAura2: number;
+    chimeType: number;
+    volume: number;
+    numberOfShinyWrinklers: number;
+    amountOfCookiesContainedInShinyWrinklers: number;
+    currentAmountOfSugarLumps: number;
+    totalAmountOfSugarLumpsMade: number;
+    timeWhenCurrentSugarLumpStarted: number;
+    timeWhenLastRefilledAMinigameWithASugarLump: number;
+    sugarLumpType: number;
+    vault: string;
+    heralds: number;
+    goldenCookieFortune: number;
+    cpSFortune: number;
+    highestRawCpS: number;
+    musicVolume: number;
+    cookiesSent: number;
+    cookiesReceived: number;
 };
 
 // Ref: https://cookieclicker.fandom.com/wiki/Save#Save_format
@@ -69,8 +122,7 @@ export type ParsedSavefile = {
 
     // TODO
 
-    // misc: MiscGameData;
-    misc: string;
+    misc: MiscGameData;
     // buildings: Array<BuildingInfo>;
     buildings: string;
     // upgrades: UpgradeInfo;
