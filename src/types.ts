@@ -1,0 +1,80 @@
+export type RunInfo = {
+    ascensionStart: number;
+    legacyStart: number;
+    lastOpened: number;
+    bakeryName: string;
+    youAppearance: string;
+    seed: string;
+};
+
+export type PreferencesInfo = {
+    particles: boolean; // Show cookies falling down, etc.?
+    numbers: boolean; // Show numbers that pop up when clicking the cookie?
+    autoSave: boolean; // Should the game be saved automatically every 60 seconds? (This cannot be changed in the options menu.)
+    autoUpdate: boolean; // Should the game automatically check for updates? If on, and a new update is available, a message will pop up asking to reload for the new update. (This cannot be changed in the options menu.)
+    milk: boolean; // Show milk under big cookie?
+    fancyGraphics: boolean; // Show fancy graphics?
+    closingWarning: boolean; // Show the warning when closing the game tab?
+    cursors: boolean; // Show your cursors around the big cookie?
+    defocus: boolean; // Enable defocus to improve performance when window is out of focus?
+    shortNumbers: boolean; // Display short numbers? If on, numbers will be displayed according to the short scale.
+    fastNotes: boolean; // Should notifications disappear much faster?
+    wobblyCookie: boolean; // Enable big cookie wobbling when clicked?
+    altFont: boolean; // Show your cookies using alternative (monospace) font?
+    CSSFilters: boolean; // Enable CSS filters?
+    altCookieSound: boolean; // Enable alternative cookie sound when clicked?
+    iconCrates: boolean; // Show crates around achievement and upgrade icons?
+    backupWarning: boolean; // Show warning to back up your save when wiping?
+    extraButtons: boolean; // Show the mute button on buildings?
+    lumpConfirmation: boolean; // Show a confirmation popup when spending sugar lumps?
+    customGrandmas: boolean; // Show custom grandma names from the Patreon? If off, only the default names will be used.
+    sleepMode: boolean; // When the game starts lagging it will put itself into sleep mode and offline production will kick in
+    enableCloudSaving: boolean; // Enables Steam cloud saving
+    musicInBackground: boolean; // If 1 the music will continue to play even when the window isn't focused
+    scaryStuffOff: boolean; // If 1 grandmapocalipse will use the unspooky sprites
+    fullscreen: boolean; // Toggles between fullscreen and windowed
+    screenReader: boolean; // Optimalizations for screen readers
+    discordPresence: boolean; // TODO
+};
+
+enum BuildingName {
+    CURSOR = 0,
+    GRANDMA = 1,
+    FARM = 2,
+    MINE = 3,
+    FACTORY = 4,
+    BANK = 5,
+    TEMPLE = 6,
+    WIZARD_TOWER = 7,
+}
+
+type BuildingInfo = {
+    name: BuildingName;
+    currentUnits: number;
+    lifetimeCookies: number;
+};
+
+type UpgradeInfo = {};
+
+type MiscGameData = {
+    cookiesInBank: number;
+    cookiesThisAscension: number;
+};
+
+// Ref: https://cookieclicker.fandom.com/wiki/Save#Save_format
+export type ParsedSavefile = {
+    version: string;
+    run: RunInfo;
+    preferences: PreferencesInfo;
+
+    // TODO
+
+    // misc: MiscGameData;
+    misc: string;
+    // buildings: Array<BuildingInfo>;
+    buildings: string;
+    // upgrades: UpgradeInfo;
+    upgrades: string;
+    achievements: string;
+    buffs: string;
+};
