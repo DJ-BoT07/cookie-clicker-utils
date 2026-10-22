@@ -6,16 +6,17 @@
   "author": "",
   "license": "MIT",
   "packageManager": "pnpm@10.6.5",
-
+  "type": "module",
   "main": "index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
   },
-  
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "dev": "tsc -p tsconfig.build.json --watch",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@types/node": "22",
     "prettier": "3.9.10",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }
