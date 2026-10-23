@@ -1,4 +1,4 @@
-import { twoSignificantDigits } from './constants.js';
+import { twoSignificantDigits } from './utils.js';
 
 const cachedBaseCps: Map<number, number> = new Map();
 
