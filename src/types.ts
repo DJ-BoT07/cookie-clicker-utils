@@ -47,10 +47,22 @@ export enum BuildingName {
     TEMPLE = 6,
     WIZARD_TOWER = 7,
     SHIPMENT = 8,
+    ALCHEMY_LAB = 9,
+    PORTAL = 10,
+    TIME_MACHINE = 11,
+    ANTIMATTER_CONDENSER = 12,
+    PRISM = 13,
+    CHANCEMAKER = 14,
+    FRACTAL_ENGINE = 15,
+    JAVASCRIPT_CONSOLE = 16,
+    IDLEVERSE = 17,
+    CORTEX_BAKER = 18,
+    YOU = 19,
 }
 
-type BuildingInfo = {
-    name: BuildingName;
+export type BuildingInfo = {
+    SERIAL_IDX: number;
+
     currentUnits: number;
     lifetimeCookies: number;
 };
@@ -120,12 +132,11 @@ export type ParsedSavefile = {
     version: string;
     run: RunInfo;
     preferences: PreferencesInfo;
+    misc: MiscGameData;
+    buildings: Record<BuildingName, BuildingInfo>;
 
     // TODO
 
-    misc: MiscGameData;
-    // buildings: Array<BuildingInfo>;
-    buildings: string;
     // upgrades: UpgradeInfo;
     upgrades: string;
     achievements: string;
