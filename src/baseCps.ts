@@ -3,7 +3,7 @@ import { twoSignificantDigits } from './utils.js';
 const cachedBaseCps: Map<number, number> = new Map();
 
 export function getBaseCps(id: number) {
-    if (cachedBaseCps.has(id)) return cachedBaseCps.get(id);
+    if (cachedBaseCps.has(id)) return cachedBaseCps.get(id)!;
 
     const baseCps = calculateBaseCps(id);
 

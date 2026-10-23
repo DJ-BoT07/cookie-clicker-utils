@@ -3,7 +3,7 @@ import { twoSignificantDigits } from './utils.js';
 const cachedBaseCosts: Map<number, number> = new Map();
 
 export function getBaseCost(id: number) {
-    if (cachedBaseCosts.has(id)) return cachedBaseCosts.get(id);
+    if (cachedBaseCosts.has(id)) return cachedBaseCosts.get(id)!;
 
     const baseCost = calculateBaseCost(id);
 
