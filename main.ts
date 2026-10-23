@@ -13,25 +13,25 @@ https://orteil.dashnet.org
 /*=====================================================================================
 MISC HELPER FUNCTIONS
 =======================================================================================*/
-function l(what) {
+function l(what: string) {
     return document.getElementById(what);
 }
-function choose(arr) {
+function choose<T>(arr: T[]) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function escapeRegExp(str) {
+function escapeRegExp(str: string) {
     return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
 function replaceAll(find, replace, str) {
     return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
-function cap(str) {
+function cap(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function romanize(num) {
+function romanize(num: number) {
     if (isNaN(num)) return NaN;
     var digits = String(+num).split(''),
         key = [
@@ -68,7 +68,7 @@ function romanize(num) {
         ],
         roman = '',
         i = 3;
-    while (i--) roman = (key[+digits.pop() + i * 10] || '') + roman;
+    while (i--) roman = (key[+digits.pop()! + i * 10] || '') + roman;
     return Array(+digits.join('') + 1).join('M') + roman;
 }
 
@@ -97,12 +97,12 @@ if (!Array.prototype.indexOf) {
     };
 }
 
-function randomFloor(x) {
+function randomFloor(x: number) {
     if (x % 1 < Math.random()) return Math.floor(x);
     else return Math.ceil(x);
 }
 
-function shuffle(array) {
+function shuffle<T>(array: T[]) {
     var counter = array.length,
         temp,
         index;
@@ -174,14 +174,14 @@ var LoadScript = function (url, callback, error) {
     document.head.appendChild(js);
 };
 
-localStorageGet = function (key) {
+localStorageGet = function (key: string) {
     var local = 0;
     try {
         local = window.localStorage.getItem(key);
     } catch (exception) {}
     return local;
 };
-localStorageSet = function (key, str) {
+localStorageSet = function (key: string, str: string) {
     var local = 0;
     try {
         local = window.localStorage.setItem(key, str);
@@ -240,7 +240,7 @@ var getJson = function (url, callback, error) {
     return true;
 };
 
-function toFixed(x) {
+function toFixed(x: number) {
     if (Math.abs(x) < 1.0) {
         var e = parseInt(x.toString().split('e-')[1]);
         if (e) {
