@@ -5,10 +5,10 @@ import type {
     PreferencesInfo,
     RunInfo,
 } from '../types.js';
-import { parseBuildings } from './buildings.js';
-import { parseMisc } from './misc.js';
-import { parsePreferences } from './preferences.js';
-import { parseRunData } from './run.js';
+import { parseBuildings, serializeBuildings } from './buildings.js';
+import { parseMisc, serializeMisc } from './misc.js';
+import { parsePreferences, serializePreferences } from './preferences.js';
+import { parseRunData, serializeRunData } from './run.js';
 
 export function parseDecodedSavestring(decodedSavestring: string) {
     const pipes = decodedSavestring.split('|');
@@ -41,4 +41,21 @@ export function parseDecodedSavestring(decodedSavestring: string) {
     };
 
     return parsedData;
+}
+
+export function serializeParsedSavestring(parsedData: ParsedSavefile): string {
+    const pipes = [
+        parsedData.version,
+        '', // future
+        serializeRunData(parsedData.run),
+        serializePreferences(parsedData.preferences),
+        serializeMisc(parsedData.misc),
+        serializeBuildings(parsedData.buildings),
+        parsedData.upgrades,
+        parsedData.achievements,
+        parsedData.buffs,
+        '',
+    ];
+
+    return pipes.join('|');
 }

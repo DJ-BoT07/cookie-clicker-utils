@@ -120,6 +120,7 @@ export function serializeMisc(misc: MiscGameData): string {
         String(misc.musicVolume),
         String(misc.cookiesSent),
         String(misc.cookiesReceived),
+        '', // future
     ].join(';');
 
     return miscstring;

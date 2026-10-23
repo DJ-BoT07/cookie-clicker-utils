@@ -63,7 +63,7 @@ export function serializePreferences(prefs: PreferencesInfo): string {
         String(Number(prefs.fullscreen)),
         String(Number(prefs.screenReader)),
         String(Number(prefs.discordPresence)),
-    ].join();
+    ].join('');
 
     return prefstring;
 }
