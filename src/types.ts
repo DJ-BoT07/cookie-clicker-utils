@@ -38,33 +38,38 @@ export type PreferencesInfo = {
 };
 
 export enum BuildingName {
-    CURSOR = "Cursor",
-    GRANDMA = "Grandma",
-    FARM = "Farm",
-    MINE = "Mine",
-    FACTORY = "Factory",
-    BANK = "Bank",
-    TEMPLE = "Temple",
-    WIZARD_TOWER = "Wizard Tower",
-    SHIPMENT = "Shipment",
-    ALCHEMY_LAB = "Alchemy Lab",
-    PORTAL = "Portal",
-    TIME_MACHINE = "Time Machine",
-    ANTIMATTER_CONDENSER = "Antimatter Condenser",
-    PRISM = "Prism",
-    CHANCEMAKER = "Chancemaker",
-    FRACTAL_ENGINE = "Fractal Engine",
-    JAVASCRIPT_CONSOLE = "Javascript Console",
-    IDLEVERSE = "Idleverse",
-    CORTEX_BAKER = "Cortex Baker",
-    YOU = "You",
+    CURSOR = 'Cursor',
+    GRANDMA = 'Grandma',
+    FARM = 'Farm',
+    MINE = 'Mine',
+    FACTORY = 'Factory',
+    BANK = 'Bank',
+    TEMPLE = 'Temple',
+    WIZARD_TOWER = 'Wizard Tower',
+    SHIPMENT = 'Shipment',
+    ALCHEMY_LAB = 'Alchemy Lab',
+    PORTAL = 'Portal',
+    TIME_MACHINE = 'Time Machine',
+    ANTIMATTER_CONDENSER = 'Antimatter Condenser',
+    PRISM = 'Prism',
+    CHANCEMAKER = 'Chancemaker',
+    FRACTAL_ENGINE = 'Fractal Engine',
+    JAVASCRIPT_CONSOLE = 'Javascript Console',
+    IDLEVERSE = 'Idleverse',
+    CORTEX_BAKER = 'Cortex Baker',
+    YOU = 'You',
 }
 
 export type BuildingInfo = {
     SERIAL_IDX: number;
 
     currentUnits: number;
+    totalUnitsBought: number;
     lifetimeCookies: number;
+    level: string;
+    minigameData: string;
+    muted: string;
+    lifetimeMaxUnits: number;
 };
 
 type UpgradeInfo = {};
