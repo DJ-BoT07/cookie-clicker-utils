@@ -1,0 +1,17 @@
+export const WizardTowerUpgrades = {
+    'Pointier hats': 244,
+    'Beardlier beards': 245,
+    'Ancient grimoires': 246,
+    'Kitchen curses': 247,
+    'School of sorcery': 248,
+    'Dark formulas': 249,
+    'Cookiemancy': 300,
+    'Rabbit trick': 313,
+    'Deluxe tailored wands': 434,
+    'Immobile spellcasting': 486,
+    'Electricity': 512,
+    'Spelling bees': 668,
+    'Wizard basements': 706,
+    'Magical realism': 749,
+    'Polymorphism': 846,
+} as const;

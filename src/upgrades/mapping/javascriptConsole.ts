@@ -1,0 +1,17 @@
+export const JavascriptConsoleUpgrades = {
+    'The JavaScript console for dummies': 594,
+    '64bit arrays': 595,
+    'Stack overflow': 596,
+    'Enterprise compiler': 597,
+    'Syntactic sugar': 598,
+    'A nice cup of coffee': 599,
+    'Just-in-time baking': 600,
+    'cookies++': 601,
+    'Software updates': 602,
+    'Game.Loop': 603,
+    'eval()': 604,
+    'Your biggest fans': 677,
+    'Hacker shades': 715,
+    'PHP containment vats': 758,
+    'Simulation failsafes': 855,
+} as const;

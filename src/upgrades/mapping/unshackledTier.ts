@@ -1,0 +1,17 @@
+export const UnshackledTierUpgrades = {
+    'Unshackled flavor': 787,
+    'Unshackled berrylium': 788,
+    'Unshackled blueberrylium': 789,
+    'Unshackled chalcedhoney': 790,
+    'Unshackled buttergold': 791,
+    'Unshackled sugarmuck': 792,
+    'Unshackled jetmint': 793,
+    'Unshackled cherrysilver': 794,
+    'Unshackled hazelrald': 795,
+    'Unshackled mooncandy': 796,
+    'Unshackled astrofudge': 797,
+    'Unshackled alabascream': 798,
+    'Unshackled iridyum': 799,
+    'Unshackled glucosmium': 800,
+    'Unshackled glimmeringue': 863,
+} as const;

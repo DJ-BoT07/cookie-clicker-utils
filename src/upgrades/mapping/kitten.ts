@@ -1,0 +1,17 @@
+export const KittenUpgrades = {
+    'Kitten helpers': 31,
+    'Kitten workers': 32,
+    'Kitten engineers': 54,
+    'Kitten overseers': 108,
+    'Kitten managers': 187,
+    'Kitten accountants': 320,
+    'Kitten specialists': 321,
+    'Kitten experts': 322,
+    'Kitten consultants': 425,
+    'Kitten assistants to the regional manager': 442,
+    'Kitten marketeers': 462,
+    'Kitten analysts': 494,
+    'Kitten executives': 613,
+    'Kitten admins': 766,
+    'Kitten strategists': 865,
+} as const;

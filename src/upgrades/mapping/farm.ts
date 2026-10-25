@@ -1,0 +1,17 @@
+export const FarmUpgrades = {
+    'Cheap hoes': 10,
+    'Fertilizer': 11,
+    'Cookie trees': 12,
+    'Genetically-modified cookies': 45,
+    'Gingerbread scarecrows': 111,
+    'Pulsar sprinklers': 193,
+    'Fudge fungus': 295,
+    'Wheat triffids': 308,
+    'Humane pesticides': 429,
+    'Barnstars': 481,
+    'Lindworms': 507,
+    'Global seed vault': 663,
+    'Reverse-veganism': 701,
+    'Cookie mulch': 744,
+    'Self-driving tractors': 841,
+} as const;

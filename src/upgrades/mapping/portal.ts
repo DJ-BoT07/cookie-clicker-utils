@@ -1,0 +1,17 @@
+export const PortalUpgrades = {
+    'Ancient tablet': 25,
+    'Insane oatling workers': 26,
+    'Soul bond': 27,
+    'Sanity dance': 50,
+    'Brane transplant': 116,
+    'Deity-sized portals': 198,
+    'End of times back-up plan': 303,
+    'Maddening chants': 316,
+    'The real world': 437,
+    'Dimensional garbage gulper': 489,
+    'Embedded microportals': 515,
+    'His advent': 671,
+    'Domestic rifts': 709,
+    'Portal guns': 752,
+    'A way home': 849,
+} as const;

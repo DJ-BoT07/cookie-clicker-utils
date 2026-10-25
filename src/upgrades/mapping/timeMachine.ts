@@ -1,0 +1,17 @@
+export const TimeMachineUpgrades = {
+    'Flux capacitors': 28,
+    'Time paradox resolver': 29,
+    'Quantum conundrum': 30,
+    'Causality enforcer': 51,
+    'Yestermorrow comparators': 117,
+    'Far future enactment': 199,
+    'Great loop hypothesis': 304,
+    'Cookietopian moments of maybe': 317,
+    'Second seconds': 438,
+    'Additional clock hands': 490,
+    'Nostalgia': 516,
+    'Split seconds': 672,
+    'Patience abolished': 710,
+    'Timeproof upholstery': 753,
+    'Rectifying a mistake': 850,
+} as const;

@@ -1,0 +1,17 @@
+export const GrandmaUpgrades = {
+    'Forwards from grandma': 7,
+    'Steel-plated rolling pins': 8,
+    'Lubricated dentures': 9,
+    'Prune juice': 44,
+    'Double-thick glasses': 110,
+    'Aging agents': 192,
+    'Xtreme walkers': 294,
+    'The Unbridling': 307,
+    'Reverse dementia': 428,
+    'Timeproof hair dyes': 480,
+    'Good manners': 506,
+    'Generation degeneration': 662,
+    'Visits': 700,
+    'Kitchen cabinets': 743,
+    'Foam-tipped canes': 840,
+} as const;

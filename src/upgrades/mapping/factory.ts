@@ -1,0 +1,17 @@
+export const FactoryUpgrades = {
+    'Sturdier conveyor belts': 13,
+    'Child labor': 14,
+    'Sweatshop': 15,
+    'Radium reactors': 46,
+    'Recombobulators': 112,
+    'Deep-bake process': 194,
+    'Cyborg workforce': 297,
+    '78-hour days': 310,
+    'Machine learning': 431,
+    'Brownie point system': 483,
+    '"Volunteer" interns': 509,
+    'Behavioral reframing': 665,
+    'The infinity engine': 703,
+    'N-dimensional assembly lines': 746,
+    'Universal automation': 843,
+} as const;

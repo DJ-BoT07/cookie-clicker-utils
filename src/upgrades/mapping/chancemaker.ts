@@ -1,0 +1,17 @@
+export const ChancemakerUpgrades = {
+    'Your lucky cookie': 416,
+    '"All Bets Are Off" magic coin': 417,
+    'Winning lottery ticket': 418,
+    'Four-leaf clover field': 419,
+    'A recipe book about books': 420,
+    'Leprechaun village': 421,
+    'Improbability drive': 422,
+    'Antisuperstistronics': 423,
+    'Bunnypedes': 441,
+    'Revised probabilistics': 493,
+    '0-sided dice': 519,
+    'A touch of determinism': 675,
+    'On a streak': 713,
+    'Silver lining maximization': 756,
+    "Gambler's fallacy fallacy": 853,
+} as const;

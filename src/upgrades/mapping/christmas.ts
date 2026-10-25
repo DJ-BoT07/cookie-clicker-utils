@@ -1,0 +1,18 @@
+export const ChristmasUpgrades = {
+    'A festive hat': 152,
+    'Increased merriness': 153,
+    'Improved jolliness': 154,
+    'A lump of coal': 155,
+    'An itchy sweater': 156,
+    'Reindeer baking grounds': 157,
+    'Weighted sleighs': 158,
+    'Ho ho ho-flavored frosting': 159,
+    'Season savings': 160,
+    'Toy workshop': 161,
+    'Naughty list': 162,
+    "Santa's bottomless bag": 163,
+    "Santa's helpers": 164,
+    "Santa's legacy": 165,
+    "Santa's milk and cookies": 166,
+    "Santa's dominion": 168,
+} as const;

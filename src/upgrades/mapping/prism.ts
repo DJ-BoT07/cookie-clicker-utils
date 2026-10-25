@@ -1,0 +1,17 @@
+export const PrismUpgrades = {
+    'Gem polish': 175,
+    '9th color': 176,
+    'Chocolate light': 177,
+    'Grainbow': 178,
+    'Pure cosmic light': 179,
+    'Glow-in-the-dark': 201,
+    'Lux sanctorum': 306,
+    'Reverse shadows': 319,
+    'Crystal mirrors': 440,
+    'Reverse theory of light': 492,
+    'Light capture measures': 518,
+    'Light speed limit': 674,
+    "Occam's laser": 712,
+    'Hyperblack paint': 755,
+    'Lab goggles but like cool shades': 852,
+} as const;

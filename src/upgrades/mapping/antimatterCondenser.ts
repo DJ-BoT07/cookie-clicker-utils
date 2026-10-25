@@ -1,0 +1,17 @@
+export const AntimatterCondenserUpgrades = {
+    'Sugar bosons': 99,
+    'String theory': 100,
+    'Large macaron collider': 101,
+    'Big bang bake': 102,
+    'Reverse cyclotrons': 118,
+    'Nanocosmics': 200,
+    'The Pulse': 305,
+    'Some other super-tiny fundamental particle? Probably?': 318,
+    'Quantum comb': 439,
+    'Baking Nobel prize': 491,
+    'The definite molecule': 517,
+    'Flavor itself': 673,
+    'Delicious pull': 711,
+    'Employee minification': 754,
+    'Candied atoms': 851,
+} as const;

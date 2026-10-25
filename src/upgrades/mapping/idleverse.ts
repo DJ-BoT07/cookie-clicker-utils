@@ -1,0 +1,17 @@
+export const IdleverseUpgrades = {
+    'Manifest destiny': 684,
+    'The multiverse in a nutshell': 685,
+    'All-conversion': 686,
+    'Multiverse agents': 687,
+    'Escape plan': 688,
+    'Game design': 689,
+    'Sandbox universes': 690,
+    'Multiverse wars': 691,
+    'Mobile ports': 692,
+    'Encapsulated realities': 693,
+    'Extrinsic clicking': 694,
+    'Universal idling': 695,
+    'Break the fifth wall': 716,
+    'Opposite universe': 759,
+    'The other routes to Rome': 856,
+} as const;

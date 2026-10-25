@@ -1,0 +1,17 @@
+export const CortexBakerUpgrades = {
+    'Principled neural shackles': 730,
+    'Obey': 731,
+    'A sprinkle of irrationality': 732,
+    'Front and back hemispheres': 733,
+    'Neural networking': 734,
+    'Cosmic brainstorms': 735,
+    'Megatherapy': 736,
+    'Synaptic lubricant': 737,
+    'Psychokinesis': 738,
+    'Spines': 739,
+    'Neuraforming': 740,
+    'Epistemological trickery': 741,
+    'Every possible idea': 742,
+    'The land of dreams': 760,
+    'Intellectual property theft': 857,
+} as const;

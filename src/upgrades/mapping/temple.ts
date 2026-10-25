@@ -1,0 +1,17 @@
+export const TempleUpgrades = {
+    'Golden idols': 238,
+    'Sacrifices': 239,
+    'Delicious blessing': 240,
+    'Sun festival': 241,
+    'Enlarged pantheon': 242,
+    'Great Baker in the sky': 243,
+    'Creation myth': 299,
+    'Theocracy': 312,
+    'Sick rap prayers': 433,
+    'Psalm-reading': 485,
+    'War of the gods': 511,
+    'A novel idea': 667,
+    'Apparitions': 705,
+    'Negatheism': 748,
+    'Temple traps': 845,
+} as const;

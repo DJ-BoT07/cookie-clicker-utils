@@ -1,0 +1,17 @@
+export const BankUpgrades = {
+    'Taller tellers': 232,
+    'Scissor-resistant credit cards': 233,
+    'Acid-proof vaults': 234,
+    'Chocolate coins': 235,
+    'Exponential interest rates': 236,
+    'Financial zen': 237,
+    'Way of the wallet': 298,
+    'The stuff rationale': 311,
+    'Edible money': 432,
+    'Grand supercycles': 484,
+    'Rules of acquisition': 510,
+    'Altruistic loop': 666,
+    'Diminishing tax returns': 704,
+    'Cookie Points': 747,
+    'The big shortcake': 844,
+} as const;

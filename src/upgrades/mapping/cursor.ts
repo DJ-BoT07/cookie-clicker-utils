@@ -1,0 +1,17 @@
+export const CursorUpgrades = {
+    'Reinforced index finger': 0,
+    'Carpal tunnel prevention cream': 1,
+    'Ambidextrous': 2,
+    'Thousand fingers': 3,
+    'Million fingers': 4,
+    'Billion fingers': 5,
+    'Trillion fingers': 6,
+    'Quadrillion fingers': 43,
+    'Quintillion fingers': 82,
+    'Sextillion fingers': 109,
+    'Septillion fingers': 188,
+    'Octillion fingers': 189,
+    'Nonillion fingers': 660,
+    'Decillion fingers': 764,
+    'Undecillion fingers': 873,
+} as const;

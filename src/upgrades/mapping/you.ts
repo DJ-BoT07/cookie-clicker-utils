@@ -1,0 +1,17 @@
+export const YouUpgrades = {
+    'Cloning vats': 826,
+    'Energized nutrients': 827,
+    'Stunt doubles': 828,
+    'Clone recycling plant': 829,
+    'Free-range clones': 830,
+    'Genetic tailoring': 831,
+    'Power in diversity': 832,
+    'Self-betterment': 833,
+    'Source control': 834,
+    'United workforce': 835,
+    'Safety patrols': 836,
+    'Clone rights': 837,
+    'One big family': 838,
+    'Fine-tuned body plans': 839,
+    'Reading your clones bedtime stories': 858,
+} as const;

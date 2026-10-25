@@ -1,0 +1,17 @@
+export const FractalEngineUpgrades = {
+    'Metabakeries': 522,
+    'Mandelbrown sugar': 523,
+    'Fractoids': 524,
+    'Nested universe theory': 525,
+    'Menger sponge cake': 526,
+    'One particularly good-humored cow': 527,
+    'Chocolate ouroboros': 528,
+    'Nested': 529,
+    'Space-filling fibers': 530,
+    'Endless book of prose': 531,
+    'The set of all sets': 532,
+    'This upgrade': 676,
+    'A box': 714,
+    'Multiscale profiling': 757,
+    'The more they stay the same': 854,
+} as const;

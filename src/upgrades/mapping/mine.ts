@@ -1,0 +1,17 @@
+export const MineUpgrades = {
+    'Sugar gas': 16,
+    'Megadrill': 17,
+    'Ultradrill': 18,
+    'Ultimadrill': 47,
+    'H-bomb mining': 113,
+    'Coreforge': 195,
+    'Planetsplitters': 296,
+    'Canola oil wells': 309,
+    'Mole people': 430,
+    'Mine canaries': 482,
+    'Bore again': 508,
+    'Air mining': 664,
+    'Caramel alloys': 702,
+    'Delicious mineralogy': 745,
+    'Mineshaft supports': 842,
+} as const;

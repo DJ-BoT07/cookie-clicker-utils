@@ -1,0 +1,17 @@
+export const AlchemyLabUpgrades = {
+    'Antimony': 22,
+    'Essence of dough': 23,
+    'True chocolate': 24,
+    'Ambrosia': 49,
+    'Aqua crustulae': 115,
+    'Origin crucible': 197,
+    'Theory of atomic fluidity': 302,
+    'Beige goo': 315,
+    'The advent of chemistry': 436,
+    'On second thought': 488,
+    'Public betterment': 514,
+    'Hermetic reconciliation': 670,
+    'Chromatic cycling': 708,
+    'Arcanized glassware': 751,
+    'The dose makes the poison': 848,
+} as const;

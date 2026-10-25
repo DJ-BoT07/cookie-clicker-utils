@@ -1,0 +1,17 @@
+export const ShipmentUpgrades = {
+    'Vanilla nebulae': 19,
+    'Wormholes': 20,
+    'Frequent flyer': 21,
+    'Warp drive': 48,
+    'Chocolate monoliths': 114,
+    'Generation ship': 196,
+    'Dyson sphere': 301,
+    'The final frontier': 314,
+    'Autopilot': 435,
+    'Restaurants at the end of the universe': 487,
+    'Universal alphabet': 513,
+    'Toroid universe': 669,
+    'Prime directive': 707,
+    'Cosmic foreground radiation': 750,
+    'At your doorstep in 30 minutes or your money back': 847,
+} as const;

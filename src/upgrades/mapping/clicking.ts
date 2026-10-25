@@ -1,0 +1,17 @@
+export const ClickingUpgrades = {
+    'Plastic mouse': 75,
+    'Iron mouse': 76,
+    'Titanium mouse': 77,
+    'Adamantium mouse': 78,
+    'Unobtainium mouse': 119,
+    'Eludium mouse': 190,
+    'Wishalloy mouse': 191,
+    'Fantasteel mouse': 366,
+    'Nevercrack mouse': 367,
+    'Armythril mouse': 427,
+    'Technobsidian mouse': 460,
+    'Plasmarble mouse': 461,
+    'Miraculite mouse': 661,
+    'Aetherice mouse': 765,
+    'Omniplast mouse': 874,
+} as const;

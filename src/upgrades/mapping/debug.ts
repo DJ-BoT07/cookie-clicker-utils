@@ -1,0 +1,16 @@
+export const DebugUpgrades = {
+    'Ultrascience': 79,
+    'Gold hoard': 83,
+    'Neuromancy': 91,
+    'Perfect idling': 124,
+    'Wrinkler doormat': 142,
+    'Reindeer season': 167,
+    'Eternal seasons': 186,
+    'Magic shenanigans': 208,
+    'Occult obstruction': 398,
+    'Glucose-charged air': 399,
+    'Turbo-charged soil': 459,
+    'A really good guide book': 644,
+    'Web cookies': 816,
+    'Steamed cookies': 817,
+} as const;
