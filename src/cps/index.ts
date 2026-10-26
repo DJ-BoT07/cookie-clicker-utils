@@ -1,58 +1,42 @@
 import { getBaseCps } from '../baseCps.js';
 import type { ParsedSavefile } from '../types.js';
-import { hasUpgrade } from '../upgrade.js';
+import { getCursorCps } from './cursor.js';
+import { getFarmCps } from './farm.js';
+import { getGrandmaCps } from './grandma.js';
 
-export function getCursorCps(game: ParsedSavefile) {
-    const buildingInfo = game.buildings.Cursor;
+export function calculateCps(game: ParsedSavefile, elapsedTime: number = 0) {
+    let totalCps = 0;
+    for (const buildingInfo of Object.values(game.buildings)) {
+        switch (buildingInfo.SERIAL_IDX) {
+            // Cursor
+            case 0: {
+                const cps = getCursorCps(game);
+                totalCps += cps;
+                break;
+            }
 
-    const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
-    let cps = baseCps;
-    let addition = 0;
+            // Grandma
+            case 1: {
+                const cps = getGrandmaCps(game);
+                totalCps += cps;
+                break;
+            }
 
-    if (hasUpgrade(game, 'Reinforced membrane')) cps *= 2;
-    if (hasUpgrade(game, 'Carpal tunnel prevention cream')) cps *= 2;
-    if (hasUpgrade(game, 'Ambidextrous')) cps *= 2;
+            // Farm
+            case 2: {
+                const cps = getFarmCps(game);
+                totalCps += cps;
+                break;
+            }
 
-    if (hasUpgrade(game, 'Thousand fingers')) {
-        for (const buildingInfo of Object.values(game.buildings)) {
-            if (buildingInfo.SERIAL_IDX === 0) continue;
-            addition += 0.1 * buildingInfo.currentUnits;
+            default: {
+                const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
+                totalCps += baseCps * buildingInfo.currentUnits;
+                break;
+            }
         }
     }
-
-    if (hasUpgrade(game, 'Million fingers')) {
-        addition *= 5;
-    }
-    if (hasUpgrade(game, 'Billion fingers')) {
-        addition *= 10;
-    }
-    if (hasUpgrade(game, 'Trillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Quadrillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Quintillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Sextillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Septillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Octillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Nonillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Decillion fingers')) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 'Undecillion fingers')) {
-        addition *= 20;
-    }
-
-    return cps * buildingInfo.currentUnits;
+    const hasBeenOneMinute = elapsedTime >= 60;
+    const mouseCps = totalCps <= 2 && !hasBeenOneMinute ? 2 : 0;
+    return totalCps + mouseCps;
 }

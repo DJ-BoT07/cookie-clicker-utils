@@ -1,12 +1,4 @@
-import { getBaseCps } from './baseCps.js';
-import { getFarmCps } from './cps/farm.js';
-import { getCursorCps } from './cps/index.js';
-import {
-    BuildingName,
-    type BuildingInfo,
-    type ParsedSavefile,
-} from './types.js';
-import { hasUpgrade } from './upgrade.js';
+import { BuildingName, type BuildingInfo } from './types.js';
 
 export const UNIT_COST_MULT = 1.15;
 
@@ -246,53 +238,4 @@ export const BUILDING_LEDGER: Record<BuildingName, BuildingInfo> = {
 
 export function getNextUnitCost(baseCost: number, unitsSoFar: number) {
     return Math.ceil(baseCost * Math.pow(UNIT_COST_MULT, unitsSoFar));
-}
-
-export function calculateCps(game: ParsedSavefile, elapsedTime: number = 0) {
-    let totalCps = 0;
-    for (const buildingInfo of Object.values(game.buildings)) {
-        switch (buildingInfo.SERIAL_IDX) {
-            // Cursor
-            case 0: {
-                const cps = getCursorCps(game);
-                totalCps += cps;
-                break;
-            }
-
-            // Grandma
-            case 1: {
-                const cps = getGrandmaCps(game);
-                totalCps += cps;
-                break;
-            }
-
-            // Farm
-            case 2: {
-                const cps = getFarmCps(game);
-                totalCps += cps;
-                break;
-            }
-
-            default: {
-                const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
-                totalCps += baseCps * buildingInfo.currentUnits;
-                break;
-            }
-        }
-    }
-    const hasBeenOneMinute = elapsedTime >= 60;
-    const mouseCps = totalCps <= 2 && !hasBeenOneMinute ? 2 : 0;
-    return totalCps + mouseCps;
-}
-
-function getGrandmaCps(game: ParsedSavefile) {
-    const buildingInfo = game.buildings.Grandma;
-    const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
-
-    let cps = baseCps;
-    if (hasUpgrade(game, 'Forwards from grandma')) cps *= 2;
-    if (hasUpgrade(game, 'Steel-plated rolling pins')) cps *= 2;
-    if (hasUpgrade(game, 'Lubricated dentures')) cps *= 2;
-
-    return cps * buildingInfo.currentUnits;
 }
