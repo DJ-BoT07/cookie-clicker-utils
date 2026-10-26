@@ -1,3 +1,16 @@
+import {
+    BILLION,
+    MILLION,
+    NONILLION,
+    OCTILLION,
+    QUADRILLION,
+    QUINTILLION,
+    SEPTILLION,
+    SEXTILLION,
+    THOUSAND,
+    TRILLION,
+} from '../../constants.js';
+
 export const CursorUpgrades = {
     'Reinforced index finger': 0,
     'Carpal tunnel prevention cream': 1,
@@ -14,4 +27,22 @@ export const CursorUpgrades = {
     'Nonillion fingers': 660,
     'Decillion fingers': 764,
     'Undecillion fingers': 873,
+} as const;
+
+export const CursorUpgradeCost = {
+    'Reinforced index finger': 100,
+    'Carpal tunnel prevention cream': 500,
+    'Ambidextrous': 10 * THOUSAND,
+    'Thousand fingers': 100 * THOUSAND,
+    'Million fingers': 10 * MILLION,
+    'Billion fingers': 100 * MILLION,
+    'Trillion fingers': 1 * BILLION,
+    'Quadrillion fingers': 10 * BILLION,
+    'Quintillion fingers': 10 * TRILLION,
+    'Sextillion fingers': 10 * QUADRILLION,
+    'Septillion fingers': 10 * QUINTILLION,
+    'Octillion fingers': 10 * SEXTILLION,
+    'Nonillion fingers': 10 * SEPTILLION,
+    'Decillion fingers': 10 * OCTILLION,
+    'Undecillion fingers': 10 * NONILLION,
 } as const;
