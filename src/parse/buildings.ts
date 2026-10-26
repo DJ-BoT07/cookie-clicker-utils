@@ -1,14 +1,10 @@
-import { BUILDING_LEDGER } from '../constants.js';
-import type { BuildingInfo, BuildingName } from '../types.js';
+import type { BuildingInfo } from '../types.js';
 
 export function parseBuildings(buildingString: string) {
     const buildingStrings = buildingString.split(';');
-    const buildingLedgerClone = structuredClone(BUILDING_LEDGER);
+    const buildingLedger: BuildingInfo[] = [];
 
-    for (const buildingInfo of Object.values(buildingLedgerClone)) {
-        const serialIdx = buildingInfo.SERIAL_IDX;
-
-        const val = buildingStrings[serialIdx]!;
+    for (const buildingString of buildingStrings) {
         const [
             _currentUnits,
             _totalUnitsBought,
@@ -17,43 +13,38 @@ export function parseBuildings(buildingString: string) {
             _minigameData,
             _muted,
             _lifetimeMaxUnits,
-        ] = val.split(',');
+        ] = buildingString.split(',');
 
-        buildingInfo.currentUnits = parseFloat(_currentUnits || '0');
-        buildingInfo.totalUnitsBought = parseFloat(_totalUnitsBought || '0');
-        buildingInfo.lifetimeCookies = parseFloat(_lifetimeCookies || '0');
-        buildingInfo.level = _level || '';
-        buildingInfo.minigameData = _minigameData || '';
-        buildingInfo.muted = _muted || '';
-        buildingInfo.lifetimeMaxUnits = parseFloat(_lifetimeMaxUnits || '0');
+        buildingLedger.push({
+            currentUnits: parseFloat(_currentUnits || '0'),
+            level: _level || '',
+            lifetimeCookies: parseFloat(_lifetimeCookies || '0'),
+            lifetimeMaxUnits: parseFloat(_lifetimeMaxUnits || '0'),
+            minigameData: _minigameData || '',
+            muted: _muted || '',
+            totalUnitsBought: parseFloat(_totalUnitsBought || '0'),
+        });
     }
 
-    return buildingLedgerClone;
+    return buildingLedger;
 }
 
-export function serializeBuildings(
-    buildingLedgerClone: Record<BuildingName, BuildingInfo>,
-) {
+export function serializeBuildings(buildingLedgerClone: Array<BuildingInfo>) {
     let buildingstring = '';
-    const numBuildings = Object.keys(buildingLedgerClone).length;
-    for (let i = 0; i < numBuildings; ++i) {
-        for (const buildingInfo of Object.values(buildingLedgerClone)) {
-            if (buildingInfo.SERIAL_IDX === i) {
-                const x = [
-                    buildingInfo.currentUnits,
-                    buildingInfo.totalUnitsBought,
-                    buildingInfo.lifetimeCookies,
-                    buildingInfo.level,
-                    buildingInfo.minigameData,
-                    buildingInfo.muted,
-                    buildingInfo.lifetimeMaxUnits,
-                ]
-                    .map(String)
-                    .join(',');
+    for (const buildingInfo of buildingLedgerClone) {
+        const x = [
+            buildingInfo.currentUnits,
+            buildingInfo.totalUnitsBought,
+            buildingInfo.lifetimeCookies,
+            buildingInfo.level,
+            buildingInfo.minigameData,
+            buildingInfo.muted,
+            buildingInfo.lifetimeMaxUnits,
+        ]
+            .map(String)
+            .join(',');
 
-                buildingstring += x + ';';
-            }
-        }
+        buildingstring += x + ';';
     }
 
     return buildingstring;

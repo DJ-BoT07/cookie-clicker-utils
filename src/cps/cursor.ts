@@ -1,11 +1,12 @@
 import { getBaseCps } from '../baseCps.js';
+import { B } from '../constants.js';
 import type { ParsedSavefile } from '../types.js';
 import { hasUpgrade } from '../upgrade.js';
 
 export function getCursorCps(game: ParsedSavefile) {
-    const buildingInfo = game.buildings.Cursor;
+    const cursorBuildingInfo = game.buildings[B.Cursor]!;
 
-    const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
+    const baseCps = getBaseCps(B.Cursor);
     let cps = baseCps;
     let addition = 0;
 
@@ -14,8 +15,8 @@ export function getCursorCps(game: ParsedSavefile) {
     if (hasUpgrade(game, 'Ambidextrous')) cps *= 2;
 
     if (hasUpgrade(game, 'Thousand fingers')) {
-        for (const buildingInfo of Object.values(game.buildings)) {
-            if (buildingInfo.SERIAL_IDX === 0) continue;
+        for (const buildingInfo of game.buildings) {
+            if (B.Cursor === 0) continue;
             addition += 0.1 * buildingInfo.currentUnits;
         }
     }
@@ -54,5 +55,5 @@ export function getCursorCps(game: ParsedSavefile) {
         addition *= 20;
     }
 
-    return cps * buildingInfo.currentUnits;
+    return cps * cursorBuildingInfo.currentUnits;
 }

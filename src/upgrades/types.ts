@@ -11,6 +11,13 @@ type TieredUpgrade = {
     price: number;
 };
 
+export type GrandmaVariantUpgrade = {
+    id: number;
+    type: 'GrandmaVariant';
+    price: number;
+    relatedBuilding: number;
+};
+
 type BasicUpgrade = {
     id: number;
     type: 'pingle';

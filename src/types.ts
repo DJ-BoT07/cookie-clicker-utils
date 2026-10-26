@@ -1,3 +1,5 @@
+export type BuildingIndex = number;
+
 export type RunInfo = {
     ascensionStart: number;
     legacyStart: number;
@@ -61,8 +63,6 @@ export enum BuildingName {
 }
 
 export type BuildingInfo = {
-    SERIAL_IDX: number;
-
     currentUnits: number;
     totalUnitsBought: number;
     lifetimeCookies: number;
@@ -71,8 +71,6 @@ export type BuildingInfo = {
     muted: string;
     lifetimeMaxUnits: number;
 };
-
-type UpgradeInfo = {};
 
 export type MiscGameData = {
     cookies: number;
@@ -138,11 +136,7 @@ export type ParsedSavefile = {
     run: RunInfo;
     preferences: PreferencesInfo;
     misc: MiscGameData;
-    buildings: Record<BuildingName, BuildingInfo>;
-
-    // TODO
-
-    // upgrades: UpgradeInfo;
+    buildings: Array<BuildingInfo>;
     upgrades: string;
     achievements: string;
     buffs: string;

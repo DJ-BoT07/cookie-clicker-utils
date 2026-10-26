@@ -1,27 +1,32 @@
-import type { BuildingInfo, ParsedSavefile } from '../../types.js';
+import type {
+    BuildingIndex,
+    BuildingInfo,
+    ParsedSavefile,
+} from '../../types.js';
 import { hasUpgrade } from '../../upgrade.js';
+import { AllUpgrades } from '../index.js';
 import type { UpgradeName } from '../types.js';
 
-export function firstOneYouDontHave(
+export function firstUpgradeYouDontHave(
     game: ParsedSavefile,
-    upgradeNames: UpgradeName[],
-): UpgradeName | undefined {
-    for (const upgradeName of upgradeNames) {
-        if (!hasUpgrade(game, upgradeName)) {
-            return upgradeName;
-        }
-    }
-}
+    b: BuildingIndex,
+    upgradeNames: Array<UpgradeName>,
+): [UpgradeName, number] | undefined {
+    const building = game.buildings[b]!;
 
-export function firstOneYouDontHaveWithQty(
-    game: ParsedSavefile,
-    buildingInfo: BuildingInfo,
-    upgradeAndQty: Array<[UpgradeName, number]>,
-): UpgradeName | undefined {
-    for (const [upgradeName, qty] of upgradeAndQty) {
+    for (const upgradeName of upgradeNames) {
         if (hasUpgrade(game, upgradeName)) continue;
 
-        if (buildingInfo.currentUnits < qty) return undefined;
-        else return upgradeName;
+        const upgrade = AllUpgrades[upgradeName];
+
+        switch (upgrade.type) {
+            case 'TieredUpgrade': {
+                if (building.currentUnits < upgrade.qty) return undefined;
+                else return [upgradeName, upgrade.price];
+            }
+
+            default:
+                return undefined;
+        }
     }
 }

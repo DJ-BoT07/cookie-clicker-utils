@@ -1,10 +1,11 @@
 import { getBaseCps } from '../baseCps.js';
+import { B } from '../constants.js';
 import type { ParsedSavefile } from '../types.js';
 import { hasUpgrade } from '../upgrade.js';
 
 export function getFarmCps(game: ParsedSavefile) {
-    const buildingInfo = game.buildings.Farm;
-    const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
+    const buildingInfo = game.buildings[B.Farm]!;
+    const baseCps = getBaseCps(B.Farm);
 
     let cps = baseCps;
 

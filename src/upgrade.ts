@@ -2,20 +2,33 @@ import type { ParsedSavefile } from './types.js';
 import { AllUpgrades } from './upgrades/index.js';
 import type { UpgradeName } from './upgrades/types.js';
 
-export function addUpgrade(game: ParsedSavefile, upgradeIndex: number) {
+export function addUpgrade(game: ParsedSavefile, upgradeName: UpgradeName) {
+    const upgradeIndex = AllUpgrades[upgradeName].id;
+    addUpgradeByIndex(game, upgradeIndex);
+}
+
+export function addUpgradeByIndex(game: ParsedSavefile, upgradeIndex: number) {
     const bitIdx = 2 * upgradeIndex + 1;
     game.upgrades =
         game.upgrades.slice(0, bitIdx) + '1' + game.upgrades.slice(bitIdx + 1);
 }
 
-export function removeUpgrade(game: ParsedSavefile, upgradeIndex: number) {
+export function removeUpgrade(game: ParsedSavefile, upgradeName: UpgradeName) {
+    const upgradeIndex = AllUpgrades[upgradeName].id;
+    removeUpgradeByIndex(game, upgradeIndex);
+}
+
+export function removeUpgradeByIndex(
+    game: ParsedSavefile,
+    upgradeIndex: number,
+) {
     const bitIdx = 2 * upgradeIndex + 1;
     game.upgrades =
         game.upgrades.slice(0, bitIdx) + '0' + game.upgrades.slice(bitIdx + 1);
 }
 
 export function hasUpgrade(game: ParsedSavefile, upgradeName: UpgradeName) {
-    const upgradeIndex = AllUpgrades[upgradeName];
+    const upgradeIndex = AllUpgrades[upgradeName].id;
     const bitIdx = 2 * upgradeIndex + 1;
     return game.upgrades[bitIdx] === '1';
 }

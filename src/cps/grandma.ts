@@ -1,10 +1,11 @@
 import { getBaseCps } from '../baseCps.js';
+import { B } from '../constants.js';
 import type { ParsedSavefile } from '../types.js';
 import { hasUpgrade } from '../upgrade.js';
 
 export function getGrandmaCps(game: ParsedSavefile) {
-    const buildingInfo = game.buildings.Grandma;
-    const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
+    const buildingInfo = game.buildings[B.Grandma]!;
+    const baseCps = getBaseCps(B.Grandma);
 
     let cps = baseCps;
 

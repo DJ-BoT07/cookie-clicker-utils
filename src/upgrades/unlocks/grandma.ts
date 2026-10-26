@@ -1,66 +1,68 @@
-import type { BuildingInfo, ParsedSavefile } from '../../types.js';
+import { B } from '../../constants.js';
+import type { ParsedSavefile } from '../../types.js';
 import { hasUpgrade } from '../../upgrade.js';
+import { AllUpgrades } from '../index.js';
 import type { UpgradeName } from '../types.js';
-import { firstOneYouDontHaveWithQty } from './utils.js';
+import type { UpgradeNameWithCost } from './types.js';
+import { firstUpgradeYouDontHave } from './utils.js';
 
 export function getFrontierGrandmaUpgrades(
     game: ParsedSavefile,
-): UpgradeName[] {
-    const arr: UpgradeName[] = [];
+): Array<UpgradeNameWithCost> {
+    const arr: UpgradeNameWithCost[] = [];
 
-    const a = firstOneYouDontHaveWithQty(game, game.buildings.Grandma, [
-        ['Forwards from grandma', 1],
-        ['Steel-plated rolling pins', 5],
-        ['Lubricated dentures', 25],
-        ['Prune juice', 50],
-        ['Double-thick glasses', 100],
-        ['Aging agents', 150],
-        ['Xtreme walkers', 200],
-        ['The Unbridling', 250],
-        ['Reverse dementia', 300],
-        ['Timeproof hair dyes', 350],
-        ['Good manners', 400],
-        ['Generation degeneration', 450],
-        ['Visits', 500],
-        ['Kitchen cabinets', 550],
-        ['Foam-tipped canes', 600],
+    const a = firstUpgradeYouDontHave(game, B.Grandma, [
+        'Forwards from grandma',
+        'Steel-plated rolling pins',
+        'Lubricated dentures',
+        'Prune juice',
+        'Double-thick glasses',
+        'Aging agents',
+        'Xtreme walkers',
+        'The Unbridling',
+        'Reverse dementia',
+        'Timeproof hair dyes',
+        'Good manners',
+        'Generation degeneration',
+        'Visits',
+        'Kitchen cabinets',
+        'Foam-tipped canes',
     ]);
     if (a) arr.push(a);
 
-    function checkGrandmaVariant(
-        upgradeName: UpgradeName,
-        buildingInfo: BuildingInfo,
-    ) {
+    function checkGrandmaVariant(upgradeName: UpgradeName) {
+        const upgrade = AllUpgrades[upgradeName];
+        if (upgrade.type !== 'GrandmaVariant') return;
+
+        const buildingIdx = upgrade.relatedBuilding;
+
         if (
             !hasUpgrade(game, upgradeName) &&
-            game.buildings.Grandma.currentUnits >= 1 &&
-            buildingInfo.currentUnits >= 15
+            game.buildings[B.Grandma]!.currentUnits >= 1 &&
+            game.buildings[buildingIdx]!.currentUnits >= 15
         ) {
-            arr.push(upgradeName);
+            arr.push([upgradeName, upgrade.price]);
         }
     }
 
-    checkGrandmaVariant('Farmer grandmas', game.buildings.Farm);
-    checkGrandmaVariant('Miner grandmas', game.buildings.Mine);
-    checkGrandmaVariant('Worker grandmas', game.buildings.Factory);
-    checkGrandmaVariant('Banker grandmas', game.buildings.Bank);
-    checkGrandmaVariant('Priestess grandmas', game.buildings.Temple);
-    checkGrandmaVariant('Witch grandmas', game.buildings['Wizard Tower']);
-    checkGrandmaVariant('Cosmic grandmas', game.buildings.Shipment);
-    checkGrandmaVariant('Transmuted grandmas', game.buildings['Alchemy Lab']);
-    checkGrandmaVariant('Altered grandmas', game.buildings.Portal);
-    checkGrandmaVariant("Grandmas' grandmas", game.buildings['Time Machine']);
-    checkGrandmaVariant('Antigrandmas', game.buildings['Antimatter Condenser']);
-    checkGrandmaVariant('Rainbow grandmas', game.buildings.Prism);
-    checkGrandmaVariant('Lucky grandmas', game.buildings.Chancemaker);
-    checkGrandmaVariant('Metagrandmas', game.buildings['Fractal Engine']);
-    checkGrandmaVariant(
-        'Binary grandmas',
-        game.buildings['Javascript Console'],
-    );
-    checkGrandmaVariant('Alternate grandmas', game.buildings.Idleverse);
-    checkGrandmaVariant('Brainy grandmas', game.buildings['Cortex Baker']);
-    checkGrandmaVariant('Clone grandmas', game.buildings.You);
+    checkGrandmaVariant('Farmer grandmas');
+    checkGrandmaVariant('Miner grandmas');
+    checkGrandmaVariant('Worker grandmas');
+    checkGrandmaVariant('Banker grandmas');
+    checkGrandmaVariant('Priestess grandmas');
+    checkGrandmaVariant('Witch grandmas');
+    checkGrandmaVariant('Cosmic grandmas');
+    checkGrandmaVariant('Transmuted grandmas');
+    checkGrandmaVariant('Altered grandmas');
+    checkGrandmaVariant("Grandmas' grandmas");
+    checkGrandmaVariant('Antigrandmas');
+    checkGrandmaVariant('Rainbow grandmas');
+    checkGrandmaVariant('Lucky grandmas');
+    checkGrandmaVariant('Metagrandmas');
+    checkGrandmaVariant('Binary grandmas');
+    checkGrandmaVariant('Alternate grandmas');
+    checkGrandmaVariant('Brainy grandmas');
+    checkGrandmaVariant('Clone grandmas');
 
     return arr;
 }
