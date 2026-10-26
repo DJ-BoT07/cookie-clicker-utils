@@ -13,6 +13,7 @@ type TieredUpgrade = {
 
 type BasicUpgrade = {
     id: number;
+    type: 'pingle';
 };
 
 export type Upgrade = TieredUpgrade | BasicUpgrade;

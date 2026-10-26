@@ -1,4 +1,4 @@
 export const GardenUpgrades = {
-    'Fern tea': 474,
-    'Ichor syrup': 475,
+    'Fern tea': { id: 474, type: 'pingle' },
+    'Ichor syrup': { id: 475, type: 'pingle' },
 } as const;

@@ -1,3 +1,3 @@
 export const MiscUpgrades = {
-    'Wrinkler ambergris': 875,
+    'Wrinkler ambergris': { id: 875, type: 'pingle' },
 } as const;

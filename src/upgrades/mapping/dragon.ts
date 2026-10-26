@@ -1,7 +1,7 @@
 export const DragonUpgrades = {
-    'A crumbly egg': 324,
-    'Dragon scale': 648,
-    'Dragon claw': 649,
-    'Dragon fang': 650,
-    'Dragon teddy bear': 651,
+    'A crumbly egg': { id: 324, type: 'pingle' },
+    'Dragon scale': { id: 648, type: 'pingle' },
+    'Dragon claw': { id: 649, type: 'pingle' },
+    'Dragon fang': { id: 650, type: 'pingle' },
+    'Dragon teddy bear': { id: 651, type: 'pingle' },
 } as const;
