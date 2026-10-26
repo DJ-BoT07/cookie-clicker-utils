@@ -2,17 +2,6 @@ import { BuildingName, type BuildingInfo } from './types.js';
 
 export const UNIT_COST_MULT = 1.15;
 
-export const THOUSAND = 1e3;
-export const MILLION = 1e6;
-export const BILLION = 1e9;
-export const TRILLION = 1e12;
-export const QUADRILLION = 1e15;
-export const QUINTILLION = 1e18;
-export const SEXTILLION = 1e21;
-export const SEPTILLION = 1e24;
-export const OCTILLION = 1e27;
-export const NONILLION = 1e30;
-
 export const BUILDING_LEDGER: Record<BuildingName, BuildingInfo> = {
     [BuildingName.CURSOR]: {
         SERIAL_IDX: 0,

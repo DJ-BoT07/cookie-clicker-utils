@@ -1,48 +1,97 @@
-import {
-    BILLION,
-    MILLION,
-    NONILLION,
-    OCTILLION,
-    QUADRILLION,
-    QUINTILLION,
-    SEPTILLION,
-    SEXTILLION,
-    THOUSAND,
-    TRILLION,
-} from '../../constants.js';
+import { n } from '../../number.js';
+import type { Upgrade } from '../types.js';
 
 export const CursorUpgrades = {
-    'Reinforced index finger': 0,
-    'Carpal tunnel prevention cream': 1,
-    'Ambidextrous': 2,
-    'Thousand fingers': 3,
-    'Million fingers': 4,
-    'Billion fingers': 5,
-    'Trillion fingers': 6,
-    'Quadrillion fingers': 43,
-    'Quintillion fingers': 82,
-    'Sextillion fingers': 109,
-    'Septillion fingers': 188,
-    'Octillion fingers': 189,
-    'Nonillion fingers': 660,
-    'Decillion fingers': 764,
-    'Undecillion fingers': 873,
-} as const;
+    'Reinforced index finger': {
+        id: 0,
+        type: 'TieredUpgrade',
+        price: 100,
+        qty: 1,
+    },
+    'Carpal tunnel prevention cream': {
+        id: 1,
+        type: 'TieredUpgrade',
+        price: 500,
+        qty: 1,
+    },
+    'Ambidextrous': {
+        id: 2,
+        type: 'TieredUpgrade',
+        price: n(10, 'thousand'),
+        qty: 10,
+    },
 
-export const CursorUpgradeCost = {
-    'Reinforced index finger': 100,
-    'Carpal tunnel prevention cream': 500,
-    'Ambidextrous': 10 * THOUSAND,
-    'Thousand fingers': 100 * THOUSAND,
-    'Million fingers': 10 * MILLION,
-    'Billion fingers': 100 * MILLION,
-    'Trillion fingers': 1 * BILLION,
-    'Quadrillion fingers': 10 * BILLION,
-    'Quintillion fingers': 10 * TRILLION,
-    'Sextillion fingers': 10 * QUADRILLION,
-    'Septillion fingers': 10 * QUINTILLION,
-    'Octillion fingers': 10 * SEXTILLION,
-    'Nonillion fingers': 10 * SEPTILLION,
-    'Decillion fingers': 10 * OCTILLION,
-    'Undecillion fingers': 10 * NONILLION,
-} as const;
+    'Thousand fingers': {
+        id: 3,
+        type: 'TieredUpgrade',
+        price: n(100, 'thousand'),
+        qty: 25,
+    },
+
+    'Million fingers': {
+        id: 4,
+        type: 'TieredUpgrade',
+        price: n(10, 'million'),
+        qty: 50,
+    },
+    'Billion fingers': {
+        id: 5,
+        type: 'TieredUpgrade',
+        price: n(100, 'million'),
+        qty: 100,
+    },
+    'Trillion fingers': {
+        id: 6,
+        type: 'TieredUpgrade',
+        price: n(1, 'billion'),
+        qty: 150,
+    },
+    'Quadrillion fingers': {
+        id: 43,
+        type: 'TieredUpgrade',
+        price: n(10, 'billion'),
+        qty: 200,
+    },
+    'Quintillion fingers': {
+        id: 82,
+        type: 'TieredUpgrade',
+        price: n(10, 'trillion'),
+        qty: 250,
+    },
+    'Sextillion fingers': {
+        id: 109,
+        type: 'TieredUpgrade',
+        price: n(10, 'quadrillion'),
+        qty: 300,
+    },
+    'Septillion fingers': {
+        id: 188,
+        type: 'TieredUpgrade',
+        price: n(10, 'quintillion'),
+        qty: 350,
+    },
+    'Octillion fingers': {
+        id: 189,
+        type: 'TieredUpgrade',
+        price: n(10, 'sextillion'),
+        qty: 400,
+    },
+    'Nonillion fingers': {
+        id: 660,
+        type: 'TieredUpgrade',
+        price: n(10, 'septillion'),
+        qty: 450,
+    },
+    'Decillion fingers': {
+        id: 764,
+        type: 'TieredUpgrade',
+        price: n(10, 'octillion'),
+        qty: 500,
+    },
+    'Undecillion fingers': {
+        id: 873,
+        type: 'TieredUpgrade',
+        price: n(10, 'nonillion'),
+        qty: 550,
+    },
+} as const satisfies Record<string, Upgrade>;
