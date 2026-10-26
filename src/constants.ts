@@ -1,23 +1,25 @@
 import { getBaseCps } from './baseCps.js';
+import { getFarmCps } from './cps/farm.js';
+import { getCursorCps } from './cps/index.js';
 import {
     BuildingName,
     type BuildingInfo,
     type ParsedSavefile,
 } from './types.js';
-import { hasUpgrade } from './u.js';
+import { hasUpgrade } from './upgrade.js';
 
 export const UNIT_COST_MULT = 1.15;
 
-const THOUSAND = 1e3;
-const MILLION = 1e6;
-const BILLION = 1e9;
-const TRILLION = 1e12;
-const QUADRILLION = 1e15;
-const QUINTILLION = 1e18;
-const SEXTILLION = 1e21;
-const SEPTILLION = 1e24;
-const OCTILLION = 1e27;
-const NONILLION = 1e30;
+export const THOUSAND = 1e3;
+export const MILLION = 1e6;
+export const BILLION = 1e9;
+export const TRILLION = 1e12;
+export const QUADRILLION = 1e15;
+export const QUINTILLION = 1e18;
+export const SEXTILLION = 1e21;
+export const SEPTILLION = 1e24;
+export const OCTILLION = 1e27;
+export const NONILLION = 1e30;
 
 export const BUILDING_LEDGER: Record<BuildingName, BuildingInfo> = {
     [BuildingName.CURSOR]: {
@@ -242,99 +244,6 @@ export const BUILDING_LEDGER: Record<BuildingName, BuildingInfo> = {
     },
 };
 
-export const CURSOR_UPGRADES = [
-    [
-        'Reinforced index finger',
-        100,
-        0,
-        'The mouse and cursors are twice as efficient.\n"prod prod"',
-    ],
-    [
-        'Carpal tunnel prevention cream',
-        500,
-        1,
-        'The mouse and cursors are twice as efficient.\n"it... it hurts to click..."',
-    ],
-    [
-        'Ambidextrous',
-        10 * THOUSAND,
-        2,
-        'The mouse and cursors are twice as efficient.\n"Look ma, both hands!"',
-    ],
-    [
-        'Thousand fingers',
-        100 * THOUSAND,
-        3,
-        'The mouse and cursors gain +0.1 cookies for each non-cursor object owned.\n"clickity"',
-    ],
-    [
-        'Million fingers',
-        10 * MILLION,
-        4,
-        'Multiplies the gain from Thousand fingers by 5.\n"clickityclickity"',
-    ],
-    [
-        'Billion fingers',
-        100 * MILLION,
-        5,
-        'Multiplies the gain from Thousand fingers by 10.\n"clickityclickityclickity"',
-    ],
-    [
-        'Trillion fingers',
-        1 * BILLION,
-        6,
-        'Multiplies the gain from Thousand fingers by 20.\n"clickityclickityclickityclickity"',
-    ],
-    [
-        'Quadrillion fingers',
-        10 * BILLION,
-        43,
-        'Multiplies the gain from Thousand fingers by 20.\n"clickityclickityclickityclickityclick"',
-    ],
-    [
-        'Quintillion fingers',
-        10 * TRILLION,
-        82,
-        'Multiplies the gain from Thousand fingers by 20.\n"man, just go click click click click click, it’s real easy, man."',
-    ],
-    [
-        'Sextillion fingers',
-        10 * QUADRILLION,
-        109,
-        'Multiplies the gain from Thousand fingers by 20.\n"sometimes\nthings just\nclick"',
-    ],
-    [
-        'Septillion fingers',
-        10 * QUINTILLION,
-        188,
-        'Multiplies the gain from Thousand fingers by 20.\n"[cursory flavor text]"',
-    ],
-    [
-        'Octillion fingers',
-        10 * SEXTILLION,
-        189,
-        'Multiplies the gain from Thousand fingers by 20..\n"Turns out you can quite put your finger on it."',
-    ],
-    [
-        'Nonillion fingers',
-        10 * SEPTILLION,
-        660,
-        'Multiplies the gain from Thousand fingers by 20.\n"Only for the freakiest handshakes."',
-    ],
-    [
-        'Decillion fingers',
-        10 * OCTILLION,
-        764,
-        'Multiplies the gain from Thousand fingers by 20.\n"If you still can\'t quite put your finger on it, you must not be trying very hard."',
-    ],
-    [
-        'Undecillion fingers',
-        10 * NONILLION,
-        873,
-        'Multiplies the gain from Thousand fingers by 20.\n"Whatever you touch\nturns to dough in your clutch."',
-    ],
-] as const;
-
 export function getNextUnitCost(baseCost: number, unitsSoFar: number) {
     return Math.ceil(baseCost * Math.pow(UNIT_COST_MULT, unitsSoFar));
 }
@@ -342,15 +251,33 @@ export function getNextUnitCost(baseCost: number, unitsSoFar: number) {
 export function calculateCps(game: ParsedSavefile, elapsedTime: number = 0) {
     let totalCps = 0;
     for (const buildingInfo of Object.values(game.buildings)) {
-        if (buildingInfo.SERIAL_IDX === 0) {
-            const cps = getCursorCps(game);
-            totalCps += cps;
-        } else if (buildingInfo.SERIAL_IDX === 1) {
-            const cps = getGrandmaCps(game);
-            totalCps += cps;
-        } else {
-            const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
-            totalCps += baseCps * buildingInfo.currentUnits;
+        switch (buildingInfo.SERIAL_IDX) {
+            // Cursor
+            case 0: {
+                const cps = getCursorCps(game);
+                totalCps += cps;
+                break;
+            }
+
+            // Grandma
+            case 1: {
+                const cps = getGrandmaCps(game);
+                totalCps += cps;
+                break;
+            }
+
+            // Farm
+            case 2: {
+                const cps = getFarmCps(game);
+                totalCps += cps;
+                break;
+            }
+
+            default: {
+                const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
+                totalCps += baseCps * buildingInfo.currentUnits;
+                break;
+            }
         }
     }
     const hasBeenOneMinute = elapsedTime >= 60;
@@ -358,67 +285,14 @@ export function calculateCps(game: ParsedSavefile, elapsedTime: number = 0) {
     return totalCps + mouseCps;
 }
 
-function getCursorCps(game: ParsedSavefile) {
-    const buildingInfo = game.buildings.Cursor;
-
-    const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
-    let cps = baseCps;
-    let addition = 0;
-
-    if (hasUpgrade(game, 0)) cps *= 2;
-    if (hasUpgrade(game, 1)) cps *= 2;
-    if (hasUpgrade(game, 2)) cps *= 2;
-    if (hasUpgrade(game, 3)) {
-        for (const buildingInfo of Object.values(game.buildings)) {
-            if (buildingInfo.SERIAL_IDX === 0) continue;
-            addition += 0.1 * buildingInfo.currentUnits;
-        }
-    }
-    if (hasUpgrade(game, 4)) {
-        addition *= 5;
-    }
-    if (hasUpgrade(game, 5)) {
-        addition *= 10;
-    }
-    if (hasUpgrade(game, 6)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 43)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 82)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 109)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 188)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 189)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 660)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 764)) {
-        addition *= 20;
-    }
-    if (hasUpgrade(game, 873)) {
-        addition *= 20;
-    }
-
-    return cps * buildingInfo.currentUnits;
-}
-
 function getGrandmaCps(game: ParsedSavefile) {
     const buildingInfo = game.buildings.Grandma;
     const baseCps = getBaseCps(buildingInfo.SERIAL_IDX);
 
     let cps = baseCps;
-    if (hasUpgrade(game, 7)) cps *= 2;
-    if (hasUpgrade(game, 8)) cps *= 2;
-    if (hasUpgrade(game, 9)) cps *= 2;
+    if (hasUpgrade(game, 'Forwards from grandma')) cps *= 2;
+    if (hasUpgrade(game, 'Steel-plated rolling pins')) cps *= 2;
+    if (hasUpgrade(game, 'Lubricated dentures')) cps *= 2;
 
     return cps * buildingInfo.currentUnits;
 }
